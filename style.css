@@ -1,0 +1,127 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  width: 100%;
+  height: 400vh;
+  overflow-x: hidden;
+}
+
+.clipped {
+  position: relative;
+}
+
+.clipped::before,
+.clipped::after {
+  height: 90vh;
+  content: "";
+  position: fixed;
+  top: 0;
+  inset: 0;
+  z-index: -1;
+}
+
+.clipped::before {
+  clip-path: polygon(0 0, 65% 0, 35% 100%, 0% 100%);
+  background: linear-gradient(45deg, red, orange);
+  transform: translateX(var(--scroll-before, 0%));
+}
+
+.clipped::after {
+  clip-path: polygon(100% 0%, 65% 0%, 35% 100%, 100% 100%);
+  background: linear-gradient(45deg, blue, purple);
+  transform: translateX(var(--scroll-after, 0%));
+}
+
+.left,
+.right {
+  position: fixed;
+  width: 100%;
+  top: 10%;
+}
+.left {
+  transform: translateX(var(--scroll-before, 0%));
+  left: 50%;
+  h1 {
+    font-size: 50px;
+  }
+}
+.right {
+  transform: translateX(var(--scroll-after, 0%)) skewX(-20deg);
+  left: 65%;
+  h1 {
+    line-height: 0;
+    font-size: 30px;
+  }
+  h2 {
+    font-size: 35px;
+  }
+  h3 {
+    font-size: 25px;
+  }
+  h1,
+  h2,
+  h3 {
+    transform: skewX(20deg);
+  }
+}
+.bg {
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 90vh;
+  z-index: -2;
+  background-position: center;
+  background-repeat: repeat;
+}
+.bg-content {
+  position: fixed;
+  width: 100%;
+  top: 10%;
+  transition: transform;
+  transform: translateX(var(--transform-x));
+  left: 50%;
+  display: flex;
+  justify-content: center;
+  height: 50%;
+  z-index: -2;
+}
+.first,
+.second,
+.third {
+  width: fit-content;
+  height: fit-content;
+  display: flex;
+  align-items: center;
+  margin: 10px 50px 0 50px;
+}
+.first h1,
+.second h1,
+.third h1 {
+  font-style: italic;
+  font-size: 130px;
+}
+
+.first div,
+.second div,
+.third div {
+  transform: skewX(-20deg);
+  h2 {
+    line-height: 0;
+    font-size: 30px;
+  }
+  p {
+    font-size: 35px;
+  }
+  h3 {
+    font-size: 25px;
+  }
+  h2,
+  h3,
+  p {
+    transform: skewX(20deg);
+  }
+}

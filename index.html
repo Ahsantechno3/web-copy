@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tilted Boxes</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <main>
+      <header id="header" class="header">
+        <div class="clipped">
+          <div class="left">
+            <h1>Ahsan</h1>
+          </div>
+          <div class="right">
+            <h1>Hello</h1>
+            <h2>.........</h2>
+            <h3>Bye</h3>
+          </div>
+          <div
+            class="bg"
+            style="background-image: url(./src/background_gray.png)"
+          ></div>
+
+          <div class="bg-content">
+            <div class="first">
+              <h1>1</h1>
+              <div>
+                <h2>Hello</h2>
+                <p class="dot">...........</p>
+                <h3 class="para">Lorem ipsum dolor</h3>
+              </div>
+            </div>
+            <div class="second">
+              <h1>2</h1>
+              <div>
+                <h2>How are you?</h2>
+                <p class="dot">...........</p>
+                <h3 class="para">Sit amet consectetur</h3>
+              </div>
+            </div>
+            <div class="third">
+              <h1>3</h1>
+              <div>
+                <h2>Bye</h2>
+                <p class="dot">...........</p>
+                <h3 class="para">Adipisicing elit. Laboriosam</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </header>
+    </main>
+    <script>
+      window.addEventListener("scroll", function () {
+        const scrollPosition = window.scrollY;
+        const clippedElement = document.querySelector(".clipped");
+        const bgContentElement = document.querySelector(".bg-content");
+
+        // Adjust these values based on your desired scroll speed and animation effect
+        const maxScroll = document.body.scrollHeight - window.innerHeight;
+        const scrollPercentage = scrollPosition / maxScroll;
+
+        // Calculate scroll-based movement for both pseudo-elements
+        const animationValueBefore = scrollPercentage * 100;
+        const animationValueAfter = -scrollPercentage * 100;
+
+        // Update positions or transform properties dynamically for both pseudo-elements
+        clippedElement.style.setProperty(
+          "--scroll-before",
+          `${-animationValueBefore}%`
+        );
+        clippedElement.style.setProperty(
+          "--scroll-after",
+          `${-animationValueAfter}%`
+        );
+        if (animationValueBefore >= 0 && animationValueBefore <= 45) {
+          bgContentElement.style.setProperty(
+            "--transform-x",
+            `${animationValueAfter}%`
+          );
+        }
+      });
+    </script>
+  </body>
+</html>
