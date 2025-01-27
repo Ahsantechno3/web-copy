@@ -1,3 +1,6 @@
+:root {
+  --height: 110vh;
+}
 * {
   margin: 0;
   padding: 0;
@@ -6,7 +9,7 @@
 
 body {
   width: 100%;
-  height: 400vh;
+  height: var(--height);
   overflow-x: hidden;
 }
 
@@ -16,12 +19,12 @@ body {
 
 .clipped::before,
 .clipped::after {
-  height: 90vh;
+  height: 99vh;
   content: "";
   position: fixed;
   top: 0;
   inset: 0;
-  z-index: -1;
+  z-index: -2;
 }
 
 .clipped::before {
@@ -41,17 +44,20 @@ body {
   position: fixed;
   width: 100%;
   top: 10%;
+  z-index: -1;
 }
 .left {
   transform: translateX(var(--scroll-before, 0%));
   left: 50%;
   h1 {
     font-size: 50px;
+    color: blue;
   }
 }
 .right {
   transform: translateX(var(--scroll-after, 0%)) skewX(-20deg);
   left: 65%;
+  color: red;
   h1 {
     line-height: 0;
     font-size: 30px;
@@ -72,8 +78,8 @@ body {
   position: fixed;
   top: 0px;
   width: 100%;
-  height: 90vh;
-  z-index: -2;
+  height: 100vh;
+  z-index: -3;
   background-position: center;
   background-repeat: repeat;
 }
@@ -87,7 +93,7 @@ body {
   display: flex;
   justify-content: center;
   height: 50%;
-  z-index: -2;
+  z-index: -3;
 }
 .first,
 .second,
@@ -124,4 +130,98 @@ body {
   p {
     transform: skewX(20deg);
   }
+}
+.first-banner {
+  margin-top: 120vh;
+  background: #000;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+.first-content {
+  margin: 50px 0 50px 0;
+  color: aliceblue;
+  display: flex;
+  justify-content: center;
+  width: 600px;
+}
+.first-content i {
+  user-select: none;
+  font-size: 60px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  p {
+    font-size: 16px;
+  }
+}
+.first-banner-content {
+  margin-top: 20px;
+  width: 600px;
+  h1 {
+    line-height: 0;
+  }
+  .dots {
+    font-size: 50px;
+  }
+  .para {
+    font-size: 20px;
+    text-align: justify;
+    margin-right: 15px;
+    display: none;
+  }
+}
+.first-profiles {
+	background: white;
+  width: 100%;
+  height: fit-content;
+  display: flex;
+  justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+.profiles-title{
+	width: 100%;
+	text-align: center;
+	.dots{
+		font-size: 50px;
+		line-height: 0.5;
+	}
+	h1{
+		font-size: 120px;
+	}
+}
+.first-items {
+  width: 800px;
+  display: flex;
+  margin: 80px;
+  flex-wrap: wrap;
+  gap: 50px;
+}
+
+.profile-card {
+  width: 220px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.profile-card {
+  img {
+    width: 200px;
+    height: 200px;
+    border: 1px solid red;
+    border-radius: 50%;
+  }
+  h2 {
+    width: 150px;
+    text-align: center;
+  }
+  hr {
+    width: 100%;
+  }
+	h3{
+		color: blue;
+		font-size: normal;
+		font-weight: normal;
+	}
 }

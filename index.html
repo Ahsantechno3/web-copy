@@ -4,6 +4,11 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Tilted Boxes</title>
+    <link
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      rel="stylesheet"
+    />
+
     <link rel="stylesheet" href="style.css" />
   </head>
   <body>
@@ -13,11 +18,13 @@
           <div class="left">
             <h1>Ahsan</h1>
           </div>
+
           <div class="right">
             <h1>Hello</h1>
             <h2>.........</h2>
             <h3>Bye</h3>
           </div>
+
           <div
             class="bg"
             style="background-image: url(./src/background_gray.png)"
@@ -51,6 +58,77 @@
           </div>
         </div>
       </header>
+      <div id="content" class="content">
+        <div id="first-block" class="first-block">
+          <div class="first-banner">
+            <div class="first-content">
+              <div class="first-banner-content">
+                <h1>Simplicity is at the heart of our agency.</h1>
+                <p class="dots">..........</p>
+                <p class="para">
+                  We have reduced formal, network procedures to a minimum. This
+                  allows us to act quickly and react flexibly. And this is
+                  possible thanks to the Great People we work with. <br /><br />
+                  Years of experience gained in the best companies on the market
+                  mean that our team treats every project with due seriousness
+                  and full commitment.
+                </p>
+              </div>
+              <i class="bx bx-down-arrow-circle"><p>Show</p></i>
+              <!-- <i class='bx bx-up-arrow-circle'></i> -->
+            </div>
+          </div>
+          <div class="first-profiles">
+            <div class="profiles-title">
+              <p class="dots">
+                ...............................................................
+              </p>
+              <h1>PEOPLE</h1>
+              <p class="dots">
+                ...............................................................
+              </p>
+            </div>
+            <div class="first-items">
+              <div class="profile-card">
+                <img src="./src/banner/001.png" alt="" />
+                <h2>Maria Belina Brzozowska</h2>
+                <hr />
+                <h3>Chairman of the Board</h3>
+              </div>
+              <div class="profile-card">
+                <img src="./src/banner/002.png" alt="" />
+                <h2>Maria Belina Brzozowska</h2>
+                <hr />
+                <h3>Chairman of the Board</h3>
+              </div>
+              <div class="profile-card">
+                <img src="./src/banner/003.png" alt="" />
+                <h2>Maria Belina Brzozowska</h2>
+                <hr />
+                <h3>Chairman of the Board</h3>
+              </div>
+              <div class="profile-card">
+                <img src="./src/banner/001.png" alt="" />
+                <h2>Maria Belina Brzozowska</h2>
+                <hr />
+                <h3>Chairman of the Board</h3>
+              </div>
+              <div class="profile-card">
+                <img src="./src/banner/001.png" alt="" />
+                <h2>Maria Belina Brzozowska</h2>
+                <hr />
+                <h3>Chairman of the Board</h3>
+              </div>
+              <div class="profile-card">
+                <img src="./src/banner/001.png" alt="" />
+                <h2>Maria Belina Brzozowska</h2>
+                <hr />
+                <h3>Chairman of the Board</h3>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
     </main>
     <script>
       window.addEventListener("scroll", function () {
@@ -61,10 +139,16 @@
         // Adjust these values based on your desired scroll speed and animation effect
         const maxScroll = document.body.scrollHeight - window.innerHeight;
         const scrollPercentage = scrollPosition / maxScroll;
+        // Get the CSS variable
+        let height = getComputedStyle(document.documentElement)
+          .getPropertyValue("--height")
+          .trim(); // trim() removes whitespace
 
+        // If you need to use it as a number:
+        let heightValue = parseInt(height);
         // Calculate scroll-based movement for both pseudo-elements
-        const animationValueBefore = scrollPercentage * 100;
-        const animationValueAfter = -scrollPercentage * 100;
+        const animationValueBefore = scrollPercentage * heightValue;
+        const animationValueAfter = -scrollPercentage * heightValue;
 
         // Update positions or transform properties dynamically for both pseudo-elements
         clippedElement.style.setProperty(
@@ -80,6 +164,27 @@
             "--transform-x",
             `${animationValueAfter}%`
           );
+        }
+      });
+
+      let arrowbtn = document.querySelector(".bx-down-arrow-circle");
+      arrowbtn.addEventListener("click", () => {
+        if (arrowbtn.classList.contains("bx-down-arrow-circle")) {
+          arrowbtn.classList.replace(
+            "bx-down-arrow-circle",
+            "bx-up-arrow-circle"
+          );
+          arrowbtn.innerHTML = "<p>Hide</p>";
+          document.querySelector(".first-banner-content .para").style.display =
+            "block";
+        } else {
+          arrowbtn.classList.replace(
+            "bx-up-arrow-circle",
+            "bx-down-arrow-circle"
+          );
+          arrowbtn.innerHTML = "<p>Show</p>";
+          document.querySelector(".first-banner-content .para").style.display =
+            "none";
         }
       });
     </script>
